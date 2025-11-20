@@ -2,9 +2,11 @@ name: Deploy HTML to Server
 
 on:
   push:
-    branches: 
-      - main
+    branches: ["main"]
 
+  merge_request:
+    branches: ["main"]
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,7 +18,7 @@ jobs:
       - name: Prepare SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSHE_KY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
       - name: Deploy via SCP
