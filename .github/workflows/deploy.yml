@@ -12,15 +12,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Disable host key checking
-        run: |
-          echo -e "Host *\n  StrictHostKeyChecking no" > ~/.ssh/config
-
       - name: Prepare SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSHE_KY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
+
+      - name: Disable host key checking
+        run: |
+          echo -e "Host *\n  StrictHostKeyChecking no" > ~/.ssh/config
+
 
       - name: Deploy via SCP
         run: |
