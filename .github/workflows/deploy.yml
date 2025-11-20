@@ -3,9 +3,6 @@ name: Deploy HTML to Server
 on:
   push:
     branches: ["main", "master"]
-
-  merge_request:
-    branches: ["main", "master"]
   
 jobs:
   deploy:
